@@ -1,5 +1,5 @@
-##🔥MOJO REFACTOR w/ 🤗 Hugging Face "urchade/gliner_base" by Snyata
-##  ### THIS IS A WORK IN PROGRESS TO BE COMPLETED -  LAST UPDATED SAT 6 APR 2024 ###
+## 🔥MOJO REFACTOR w/ 🤗 Hugging Face "urchade/gliner_base" by Aylex Riom (Snyata)
+###  ### THIS IS A WORK IN PROGRESS TO BE COMPLETED -  LAST UPDATED SAT 6 APR 2024 ###
 
 ### Original Knowledge Graph Creator command line tool: kgcreator
 #### [Mark Watson - KGCreator](https://github.com/mark-watson/kgcreator)
