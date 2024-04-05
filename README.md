@@ -2,7 +2,7 @@
 ##  ### TO BE COMPLETED -  SAT 6 APR 2024 ###
 
 ### Original Knowledge Graph Creator command line tool: kgcreator
-#### [!Mark Watson - KGCreator](https://github.com/mark-watson/kgcreator)
+#### [Mark Watson - KGCreator](https://github.com/mark-watson/kgcreator)
 
 #### Below is the original details.
 [![PyPI](https://img.shields.io/pypi/v/kgcreator.svg)](https://pypi.org/project/kgcreator/)
@@ -30,3 +30,12 @@ Start by identifying:
 - Constraints to be defined.
 - Indexes required.
 - The most important queries?
+
+## Additional KGLiNER functionality
+- Contextual labelling of the entities based on the structured feedback of an LLM using the Portkey AI Gateway.
+- Optimized chunking strategies depending on the type of use case. Implementation here is ambiguous.
+- Additional Metadata is applied to the Graph as it is developed.
+- Rust based Petgraph Knowledge Graph (TBC)
+- More will come.
+
+  #### Contributors welcome: core@synavate.tech
