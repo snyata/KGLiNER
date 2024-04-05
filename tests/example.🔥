@@ -1,0 +1,13 @@
+from kgliner import load_spacy_model
+
+
+
+@test
+fn test_find_entities_in_text():
+    let nlp_model = load_spacy_model();
+    let test_text = "Apple is looking at buying U.K. startup for $1 billion"
+    let entities = find_entities_in_text(nlp_model, test_text);
+
+    // Assuming an assert function is available to verify the test outcome
+    assert(entities.len() > 0, "Entities should be detected.")
+    assert(entities.contains(["Apple", "ORG"]), "Apple as ORG should be detected.")

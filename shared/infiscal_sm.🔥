@@ -1,0 +1,42 @@
+# Secrets Manager
+# "https://infisical.com/docs/sdks/languages/python#installation"
+from python import Python as impy
+
+fn main() raises:
+    try:
+        let os = impy.import_module("os")
+        let Flask = impy.import_module("flask").Flask
+        let infisical_client = impy.import_module("InfisicalClient")
+        let ClientSettings = impy.import_module("client.ClientSettings")
+        let GetSecretOptions = impy.import_module("client.GetSecretOptions")
+        let load_dotenv = impy.import_module("dotenv").load_dotenv
+
+        # Loading environment variables
+        load_dotenv()
+    except Exception as e:
+        print("Failed to import modules: ", e)
+        return
+
+    let app = Flask("__main__")
+
+    let client = infisical_client(ClientSettings(
+        client_id=os.getenv("MACHINE_IDENTITY_CLIENT_ID"),
+        client_secret=os.getenv("MACHINE_IDENTITY_CLIENT_SECRET"),
+    ))
+
+    @app.route("/")
+    fn infisical_auth() -> String:
+        try:
+            let options = GetSecretOptions(
+                environment="dev",
+                project_id=os.getenv("PROJECT_ID"),
+                secret_name="NAME"
+            )
+            let name = client.getSecret(options)
+            return f"Hello! My name is: {name.secret_value}"
+        except Exception as e:
+            print("Error fetching secret: ", e)
+            return "An error occurred"
+
+    # Assuming a function `app.run()` to start the Flask server
+    app.run()

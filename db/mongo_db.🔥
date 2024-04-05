@@ -1,0 +1,32 @@
+from python import Python as impy
+try:
+    let _logger = impy.import_module('yoguru');
+
+
+
+struct MongoDBHelper:
+    var db_uri: PythonObject
+    var client: PythonObject
+    var db: PythonObject
+    var collection: PythonObject
+
+
+    fn __init__raises (inout self, db_name: String, collection_name: String):
+        let db_uri: String = os.getenv("MONGO_URI")
+        let MongoClient = impy.import_module("pymongo").MongoClient
+        self.client = MongoClient(db_uri)
+        self.db = self.client[db_name]
+        self.collection = self.db[collection_name]
+        return _logger.info("DB Initiated")
+
+    fn insert_one(inout self, document: PythonObject) raises -> PythonObject:
+        return self.collection.insert_one(document)
+
+    fn find(self, query: PythonObject = impy.import_module("builtins").dict()) raises -> PythonObject:
+        return self.collection.find(query, {"_id": 0}).to_list()
+
+    fn update_one(inout self, query: PythonObject, update: PythonObject) -> None:
+        return self.collection.update_one(query, {"$set": update})
+
+    fn delete_one(inout self, query: PythonObject) raises -> None:
+        return self.collection.delete_one(query)

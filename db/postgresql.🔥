@@ -1,0 +1,52 @@
+from python import Python as impy
+
+# Define the PostgreSQL connection parameters
+struct PostgreSQLConfig:
+    dbname: String;
+    user: String;
+    password: String;
+    host: String = "localhost"  # Default value
+    port: Int = 5432            # Default value
+
+    fn __init__(inout self, dbname: String, user: String, password: String, host: String = "localhost", port: Int = 5432):
+        self.dbname = dbname
+        self.user = user
+        self.password = password
+        self.host = host
+        self.port = port
+
+# Define the PostgreSQL connection manager
+struct PostgreSQLConnectionManager:
+    config: PostgreSQLConfig
+    psycopg2 = impy.import_module("psycopg2")
+
+    fn __init__(inout self, config: PostgreSQLConfig):
+        self.config = config
+
+    # Establish a connection to the PostgreSQL database
+    fn connect(self) -> PythonObject raises:
+        try:
+            conn = self.psycopg2.connect(
+                dbname=self.config.dbname,
+                user=self.config.user,
+                password=self.config.password,
+                host=self.config.host,
+                port=self.config.port
+            )
+            return conn
+        except Exception as e:
+            raise Error("Connection failed: " + str(e))
+
+    # Execute a query
+    fn execute_query(self, query: String, params: PythonObject = None) raises:
+        try:
+            with self.connect() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(query, params)
+                    conn.commit()
+                    # For SELECT queries
+                    if query.lower().startswith("select"):
+                        return cur.fetchall()
+        except Exception as e:
+            raise Error("Query execution failed: " + str(e))
+

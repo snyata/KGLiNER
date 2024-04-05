@@ -16,6 +16,6 @@ sudo -u $username modular install mojo
 export MODULAR_HOME="$HOME/.modular"
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
-git clone https://github.com/saviorand/lightbug_http.git ./src
-cd src
-mojo bench.mojo
+#git clone https://github.com/saviorand/lightbug_http.git ./src
+#cd src
+#mojo bench.mojo

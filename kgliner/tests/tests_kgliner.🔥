@@ -1,12 +1,13 @@
+# Mojo KGLiNER Testing
 from python import Python as impy;
+let pytest = impy.import_module("pytest")
 
 try:
     let os: PythonObject = impy.import_module("os");
-    let system: PythonObject= os.system
+    let system: PythonObject = os.system
     let click: PythonObject = impy.import_module('click.testing.CliRunner');
     let spaCy = impy.import_module('spaCy');
     from click import CliRunner
-    from ..src.cli import cli
 except:
     Exception as var e:
     print(e)

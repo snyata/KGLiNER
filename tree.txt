@@ -1,0 +1,41 @@
+.
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── __init__.🔥
+├── _arc
+│   ├── CONTRIBUTING.md
+│   ├── README.md
+│   └── schemas.🔥
+├── _private
+│   ├── compare.md
+│   ├── gli_ner.🔥
+│   ├── kgcreator.py
+│   ├── mojo10.md
+│   └── schema_gen.py
+├── _py
+│   └── main.py
+├── docker
+│   ├── docker-compose.yml
+│   ├── kgliner.dockerfile
+│   └── run.sh
+├── gen_ner
+│   ├── __init__.🔥
+│   ├── cli.🔥
+│   ├── datamapping.🔥
+│   ├── gen_labels.🔥
+│   └── gli_ner.🔥
+├── main.🔥
+├── poetry.lock
+├── pyproject.toml
+├── setup.🔥
+├── shared
+│   └── py_wrapper.🔥
+├── tests
+│   ├── test_kgcreator.🔥
+│   └── tests_kgliner.🔥
+└── tree.txt
+
+8 directories, 31 files

@@ -1,4 +1,5 @@
-# Knowledge Graph Creator command line tool: kgcreator 🔥MOJO REFACTOR
+# SNYATA 🔥MOJO REFACTOR w/ 🤗 Hugging Face "urchade/gliner_base"
+# Original Knowledge Graph Creator command line tool: kgcreator
 
 [![PyPI](https://img.shields.io/pypi/v/kgcreator.svg)](https://pypi.org/project/kgcreator/)
 [![Changelog](https://img.shields.io/github/v/release/mark-watson/kgcreator?include_prereleases&label=changelog)](https://github.com/mark-watson/kgcreator/releases)

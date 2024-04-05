@@ -1,0 +1,44 @@
+# Extracting labels from structured text
+from python import Python as impy
+
+# Assuming Portkey and necessary libraries are accessible via Python interop
+let os = impy.import_module("os")
+let Portkey = impy.import_module("portkeyai").Portkey
+
+struct PortkeyClient:
+    var api_key: String
+    var virtual_key: String
+    var client: PythonObject
+
+    # Initialize the Portkey client within the constructor
+    fn __init__(inout self, api_key: String):
+        self.api_key = api_key
+        self.virtual_key = os.getenv("OPENAI_API_KEY")
+        try:
+            self.client = Portkey(api_key=self.api_key, virtual_key=self.virtual_key)
+        except Exception as e:
+            print("Failed to initialize Portkey client: ", e)
+
+    # Function to generate a text completion using Portkey
+    fn get_text_completion(self, prompt: String, model: String) -> PythonObject:
+        try:
+            let completion = self.client.completions.create(prompt=prompt, model=model)
+            return completion
+        except Exception as e:
+            print("Failed to generate text completion: ", e)
+            return None
+
+# Usage example
+fn gen_labels(prompt_in, ) raises {
+    let pk_api_key = os.getenv("PORTKEY_API_KEY")
+    var pk_client = PortkeyClient(api_key=pk_api_key)
+
+    let prompt = "Say this is a test"
+    let model = "gpt-3.5-turbo-instruct"
+    let response = pk_client.get_text_completion(prompt=prompt, model=model)
+
+    if response != None {
+        print("Completion: ", response)
+    }
+}
+

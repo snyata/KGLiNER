@@ -1,0 +1,48 @@
+// Helper can insert one document into the collection
+from python import Python as impy
+
+@test
+fn test_insert_one_document():
+    // Mocking the necessary dependencies
+    let db_uri = "mock_db_uri"
+    let db_name = "mock_db_name"
+    let collection_name = "mock_collection_name"
+    let document = {"key": "value"}
+
+    // Mocking the import_module function
+    impy.import_module = mock_import_module
+
+    // Mocking the os.getenv function
+    os.getenv = mock_getenv
+
+    // Mocking the MongoClient class
+     let mock_MongoClient = impy.import_module("pymongo").MongoClient
+
+    // Creating an instance of MongoDBHelper
+    let mongo_helper = MongoDBHelper(db_name, collection_name)
+    let assert
+
+    // Asserting that the MongoClient was called with the correct arguments
+    assert(mock_MongoClient.called_with(db_uri), "MongoClient should be called with the correct db_uri")
+
+    // Asserting that the MongoDBHelper instance has the correct client, db, and collection attributes
+    assert(mongo_helper.client == mock_MongoClient.return_value, "MongoDBHelper should have the correct client attribute")
+    assert(mongo_helper.db == mock_MongoClient.return_value[db_name], "MongoDBHelper should have the correct db attribute")
+    assert(mongo_helper.collection == mock_MongoClient.return_value[db_name][collection_name], "MongoDBHelper should have the correct collection attribute")
+
+    // Calling the insert_one method on MongoDBHelper
+    let result = mongo_helper.insert_one(document)
+
+    // Asserting that the insert_one method was called with the correct argument
+    assert(mock_collection.insert_one.called_with(document), "insert_one should be called with the correct document")
+
+    // Asserting that the result is the expected value
+    assert(result == mock_collection.insert_one.return_value, "insert_one should return the correct result")
+
+    // Restoring the mocked functions and objects
+    impy.import_module = impy_import_module
+    os.getenv = os_getenv
+    impy.import_module("pymongo").MongoClient = MongoClient
+
+    // Assuming an assert function is available to verify the test outcome
+    assert(true, "Test passed")

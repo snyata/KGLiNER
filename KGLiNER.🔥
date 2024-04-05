@@ -1,0 +1,59 @@
+from python import Python as impy
+from generate_labels import gen_labels
+
+fn load_spacy_model() -> PythonObject:
+    let spacy = impy.import_module("spacy")
+    try:
+        return spacy.load("en_core_web_sm")
+    except:
+        let os = impy.import_module("os")
+        os.system("python -m spacy download en_core_web_sm")
+        return spacy.load("en_core_web_sm")
+
+// DB
+
+fn file_data():
+    let Path = impy.import_module('pathlib.Path')
+    let file_path = Path('./')
+    
+
+fn find_entities_in_text(nlp_model: PythonObject, some_text: String) -> PythonObject:
+    let clean = (s: String) -> String {
+        return s.replace("\n", " ").strip()
+    }
+    let doc = nlp_model(some_text)
+    return doc.ents.map((entity) -> [clean(entity.text), entity.label_])
+
+// Process directories
+
+fn process_directory(directory_name: String, output_rdf: String, output_neo4j: String) {
+    try:
+        load_spacy_model()
+        find_entities_in_text()
+    # Assuming a function to iterate over directory entries, open files, etc.,
+    # leveraging Python interop as necessary.
+}
+
+
+
+
+
+
+/* from kgliner_gen import * as kgliner
+from db.postresql import * as db
+from
+
+fn main(data) raises:
+    try:
+        // init secrets
+
+        // Init DB
+
+        // init portkey
+
+        //init
+        var model= SysServer()
+        var kliner = Welcome()
+        server.listen_and_serve("0.0.0.0:8080", handler)
+        */
+
