@@ -1,6 +1,8 @@
 .
+├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── KGLiNER.🔥
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -8,7 +10,8 @@
 ├── _arc
 │   ├── CONTRIBUTING.md
 │   ├── README.md
-│   └── schemas.🔥
+│   ├── schemas.🔥
+│   └── setup.🔥
 ├── _private
 │   ├── compare.md
 │   ├── gli_ner.🔥
@@ -17,25 +20,34 @@
 │   └── schema_gen.py
 ├── _py
 │   └── main.py
+├── db
+│   ├── db.env
+│   ├── mongo_db.🔥
+│   ├── postgresql.🔥
+│   └── tests
+│       └── test_mongo.🔥
 ├── docker
 │   ├── docker-compose.yml
 │   ├── kgliner.dockerfile
 │   └── run.sh
-├── gen_ner
+├── example.env
+├── kgliner
 │   ├── __init__.🔥
 │   ├── cli.🔥
 │   ├── datamapping.🔥
-│   ├── gen_labels.🔥
-│   └── gli_ner.🔥
-├── main.🔥
+│   ├── gli_ner.🔥
+│   └── tests
+│       └── tests_kgliner.🔥
 ├── poetry.lock
 ├── pyproject.toml
-├── setup.🔥
 ├── shared
+│   ├── infiscal_sm.🔥
+│   ├── portkey_gateway
+│   │   ├── generate_labels.🔥
+│   │   └── portkey_config.json
 │   └── py_wrapper.🔥
 ├── tests
-│   ├── test_kgcreator.🔥
-│   └── tests_kgliner.🔥
+│   └── example.🔥
 └── tree.txt
 
-8 directories, 31 files
+12 directories, 39 files

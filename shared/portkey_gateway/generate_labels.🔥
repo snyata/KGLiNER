@@ -13,7 +13,7 @@ struct PortkeyClient:
     var api_key: String
     var virtual_key: String
     var client: PythonObject
-    
+
 
     # Initialize the Portkey client within the constructor
     fn __init__(inout self, api_key: String):
@@ -34,11 +34,11 @@ struct PortkeyClient:
             return None
 
 # Usage example
-fn gen_labels(prompt_in, ) raises {
+fn gen_labels(prompt: prompt_in, ) raises {
     let pk_api_key = os.getenv("PORTKEY_API_KEY")
-    var pk_client = PortkeyClient(api_key=pk_api_key)
+    let pk_client = PortkeyClient(api_key=os.getenv(pk_api_key))
 
-    let prompt = "Say this is a test"
+    let prompt = prompt_in
     let model = "gpt-3.5-turbo-instruct"
     let response = pk_client.get_text_completion(prompt=prompt, model=model)
 
