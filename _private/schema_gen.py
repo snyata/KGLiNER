@@ -1,1 +1,0 @@
-# Resources around schema generation
