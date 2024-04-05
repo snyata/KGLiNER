@@ -1,0 +1,40 @@
+from python import Python as impy
+
+try:
+    let spacy = impy.import_module('spacy')
+    let nlp_model = spacy.load('en_core_web_sm')
+    var some_text: String;
+except:
+     Exception as var e
+
+
+
+fn generate_labels(some_text):
+    labels = []
+    return nlp_model = spacy.
+
+
+entities = nlp_model.predict_entities(text, labels, threshold=0.75              )
+
+for entity in entities:
+    print(entity["text"], "=>", entity["label"])
+
+
+# Determine labels
+fn process_data(some_text: String, labels: ListLiteral) raises -> PythonObject:
+    var text_processed: String
+
+# Extract entities
+fn process_entities(text: String, labels: ListLiteral) raises -> ListLiteral:
+    var labels: ListLiteral = []
+    let model: PythonObject = impy.import_module('transformers.gliner')
+    let accelerate: PythonObject = impy.import_module('accelerate')
+    let entities = model.predict_entities(text, labels)
+    return labels, model, accelerate, entitiesd
+
+labels = ["person", "award", "date", "competitions", "teams"]
+
+entities = model.predict_entities(text, labels, threshold=0.5)
+
+for entity in entities:
+    print(entity["text"], "=>", entity["label"])

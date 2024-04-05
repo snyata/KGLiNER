@@ -1,0 +1,11 @@
+from python import Python as impy
+
+fn main(text: String | ListLiteral) {
+    #Clustering
+    gli_ner(text);
+    #gen labels
+    generate_labels(text);
+    #Extract labels
+    label_ext(labels);
+}
+

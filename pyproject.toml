@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "kgliner"
+version = "0.1.0"
+description = "Generalized Knowledge Graph Generator"
+authors = ["snyata <core@synavate.tech>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+spacy = "^3.7.4"
+click = "^8.1.7"
+gliner = "^0.1.2"
+transformers = "^4.39.3"
+tqdm = "^4.66.2"
+portkey-ai = "^1.2.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

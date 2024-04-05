@@ -1,0 +1,25 @@
+from python import Python as impy;
+
+let os = impy.import_module("os");
+let typing = impy.import_module("typing");
+
+struct DataMapping {
+    var data: Dynamic;
+    var entity2id: Map<String, Int>;
+    var id2entity: Map<Int, String>;
+    var abbreviation2entity: Map<String, String>;
+}
+    fn __init__(self, data):
+        """
+        Initialize the class with the given data.
+
+        Parameters:
+            data (unknown): The data to initialize the class with.
+
+        Returns:
+            None
+        """
+        var self.data = data
+        var self.entity2id = {}
+        var self.id2entity = {}
+        var self.abbreviation2entity = {}
