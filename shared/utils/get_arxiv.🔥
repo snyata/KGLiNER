@@ -1,4 +1,6 @@
-from python import Python as py
+from python import Python as impy
+let asyncio = impy.import_module("asyncio")
+let aiohttp = impy.import_module("aiohttp")
 
 async fn fetch_papers_from_arxiv(categories: [String], max_results: Int = 10) -> [Paper] raises:
     let utils = py.import_module("utils.http_requests")
@@ -10,4 +12,4 @@ async fn fetch_papers_from_arxiv(categories: [String], max_results: Int = 10) ->
     # Convert papers_data to [Paper] struct
     return papers
 
-    
+
