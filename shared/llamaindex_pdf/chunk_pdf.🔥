@@ -1,0 +1,14 @@
+# Using Llama Index to break down unstructured data from pdf into text based information that can be processed.
+
+def chunk_data(data, chunk_size):
+    """
+    Divides data into smaller chunks.
+    
+    Args:
+        data (list): The data to be chunked.
+        chunk_size (int): Size of each chunk.
+        
+    Returns:
+        list: A list of data chunks.
+    """
+    return [data[i:i + chunk_size] for i in range(0, len(data), chunk_size)]

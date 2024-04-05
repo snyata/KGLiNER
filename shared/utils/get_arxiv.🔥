@@ -1,0 +1,13 @@
+from python import Python as py
+
+async fn fetch_papers_from_arxiv(categories: [String], max_results: Int = 10) -> [Paper] raises:
+    let utils = py.import_module("utils.http_requests")
+    let xml_utils = py.import_module("utils.xml_parsing")
+    let base_url = "http://export.arxiv.org/api/query?"
+    let query = f"search_query={'+'.join(categories)}&start=0&max_results={max_results}"
+    let xml_content = await utils.fetch_arxiv_papers(base_url + query)
+    let papers_data = xml_utils.parse_xml_response(xml_content)
+    # Convert papers_data to [Paper] struct
+    return papers
+
+    

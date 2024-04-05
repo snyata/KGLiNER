@@ -1,0 +1,12 @@
+from python import Python as impy
+let benchllm = impy.import_module('benchllm')
+
+
+
+def run_my_model(input):
+    # Your model's logic goes here.
+    return some_result
+
+@benchllm.test(suite="../tests/") 
+fn invoke_model(input: str) raises -> String:
+    return run_my_model(input)

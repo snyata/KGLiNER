@@ -1,18 +1,19 @@
 // KGLiNER Main File
 from python import Python as impy
-from generate_labels import gen_labels
+from kgliner.gli_ner import gen_labels
 
-fn load_spacy_model() -> PythonObject:
-    let spacy = impy.import_module("spacy")
-    let np = impy.import_module("numpy") 
-    let pd = impy.import_module("pandas") 
-
-
+fn load_spacy_model() raises -> PythonObject:
     try:
-        return spacy.load("en_core_web_sm")
-    except:
         let os = impy.import_module("os")
-        os.system("python -m spacy download en_core_web_sm")
+        let os.system("python -m spacy download en_core_web_sm")
+        let spacy_model = impy.import_module("spacy").load("en_core_web_sm")
+        let np = impy.import_module("numpy") 
+        let pd = impy.import_module("pandas")     
+    except:
+        Exception as e
+        logger
+        
+       
         return spacy.load("en_core_web_sm")
 
 // data
@@ -36,14 +37,9 @@ fn process_directory(directory_name: String, output_rdf: String, output_neo4j: S
     try:
         load_spacy_model()
         find_entities_in_text()
-    # Assuming a function to iterate over directory entries, open files, etc.,
+    # Add a function to iterate over directory entries, open files, etc.,
     # leveraging Python interop as necessary.
 }
-
-
-
-
-
 
 /* from kgliner_gen import * as kgliner
 from db.postresql import * as db
@@ -58,8 +54,5 @@ fn main(data) raises:
         // init portkey
 
         //init
-        var model= SysServer()
-        var kliner = Welcome()
-        server.listen_and_serve("0.0.0.0:8080", handler)
-        */
+       
 

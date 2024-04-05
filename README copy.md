@@ -1,8 +1,9 @@
 ##🔥MOJO REFACTOR w/ 🤗 Hugging Face "urchade/gliner_base" by Snyata
-### ### TO BE COMPLETED AS OF SAT 6 APR 2024 ###
-# Original Knowledge Graph Creator command line tool: kgcreator
-[!Mark Watson - KGCreator](https://github.com/mark-watson/kgcreator)
+##  ### TO BE COMPLETED AS OF SAT 6 APR 2024 ###
+### Original Knowledge Graph Creator command line tool: kgcreator
+#### [!Mark Watson - KGCreator](https://github.com/mark-watson/kgcreator)
 
+#### Below is the original details.
 [![PyPI](https://img.shields.io/pypi/v/kgcreator.svg)](https://pypi.org/project/kgcreator/)
 [![Changelog](https://img.shields.io/github/v/release/mark-watson/kgcreator?include_prereleases&label=changelog)](https://github.com/mark-watson/kgcreator/releases)
 [![Tests](https://github.com/mark-watson/kgcreator/workflows/Test/badge.svg)](https://github.com/mark-watson/kgcreator/actions?query=workflow%3ATest)

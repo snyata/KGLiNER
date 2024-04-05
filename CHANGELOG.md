@@ -1,5 +1,5 @@
 # CHANGELOG - KGLINER
-## A mojo implementation of kgcreator by Mark Watson
+## A general label approach to a Mojo implementation of ```kgcreator``` by Mark Watson
 
 ### 06042024:
 - Initiated all basic functionality
@@ -9,4 +9,5 @@
 ### TODO
 - Expand Portkey functionality
 - Incorporate the NER model more fully
+- Enable embeddings
 

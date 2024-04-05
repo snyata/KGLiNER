@@ -1,0 +1,83 @@
+# Import Python interoperability capabilities
+from python import Python as impy
+
+struct FileProcessor {
+    var pd: PythonObject = impy.import_module("pandas")
+    var spacy: PythonObject = impy.import_module("spacy")
+    var glob: PythonObject = impy.import_module("glob")
+    var pathlib: PythonObject = impy.import_module("pathlib")
+    var os: PythonObject = impy.import_module("os")
+    var nlp_model: PythonObject
+    var logging: loguru = impy.import_module("loguru")
+
+    fn init() -> Self {
+        # Load the spacy NLP model
+        try {
+            self.nlp_model = self.spacy.load("en_core_web_sm")
+        } except e {
+            # Handle the case where the model is not found or another error occurs
+            println!("Failed to load Spacy model: \(e)")
+            
+        }
+        return Self(pd: self.pd, spacy: self.spacy, nlp_model: self.nlp_model, glob: self.glob, pathlib: self.pathlib, os: self.os)
+    }
+
+    fn process_files(directory_path: String) {
+        # Compile the list of all CSV and JSON files within the specified directory
+        let csv_files = self.glob.glob("./results/input_files/*.csv")
+        let json_files = self.glob.glob("./results/input_files/*.json")
+        let all_files = csv_files.concat(json_files)
+        for file_path in all_files {
+            self.process_file(self.pathlib.Path(file_path))
+        }
+    }
+
+    fn process_file(file_path: PythonObject) {
+        # Determine the file type and process accordingly
+        match str(file_path.suffix) {
+            ".csv" => self.process_csv(file_path),
+            ".json" => self.process_json(file_path),
+            _ => println!("Unsupported file type for \(file_path)")
+        }
+    }
+
+    fn process_csv(file_path: PythonObject) {
+        # Read CSV file into a Pandas DataFrame and process it
+        let df: PythonObject = self.pd.read_csv(str(file_path))
+        self.process_data_frame(df)
+    }
+
+    fn process_json(file_path: PythonObject) {
+        # Read JSON file into a Pandas DataFrame and process it
+        let df: PythonObject = self.pd.read_json(str(file_path))
+        self.process_data_frame(df)
+    }
+
+    fn process_data_frame(df: PythonObject) {
+        # Iterate over DataFrame rows to process each text entry
+        let texts: PythonObject = df["text_column"]  # Assume a specific column name for text
+        for text in texts {
+            let doc = self.nlp_model(str(text))
+            for ent in doc.ents {
+                println!("Entity: \(ent.text), Label: \(ent.label_)")
+                self.save_entity(ent.text, ent.label_)
+            }
+        }
+    }
+
+    fn save_entity(entity: String, label: String) {
+        # Save the extracted entity and its label to a file
+        let output_path = self.pathlib.Path("./results/tmp/entities.txt")
+        if not self.os.path.exists(output_path.parent) {
+            self.os.makedirs(output_path.parent)
+        }
+        let file = self.os.open(output_path, "a")
+        file.write("\(entity) => \(label)\n")
+        file.close()
+    }
+}
+
+fn main() {
+    let processor = FileProcessor().init()
+    processor.process_files("./input_files")
+}
