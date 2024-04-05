@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "kgliner"
+name = "kgliner_mojo"
 version = "0.1.0"
-description = "Generalized Knowledge Graph Generator"
+description = "Generalized Knowledge Graph Generator using NER, PortkeyAI and KGCreator"
 authors = ["snyata <core@synavate.tech>"]
 license = "Apache-2.0"
 readme = "README.md"

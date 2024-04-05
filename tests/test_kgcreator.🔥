@@ -2,12 +2,14 @@ from python import Python as impy;
 
 try:
     let os: PythonObject = impy.import_module("os");
-    let system: PythonObject= impy.("os.system");
+    let system: PythonObject= os.system
     let click: PythonObject = impy.import_module('click.testing.CliRunner');
-    let spacy = impy.import_module('spacy');
-    from click.testing import CliRunner
-    from ..cli import cli
-    
+    let spaCy = impy.import_module('spaCy');
+    from click import CliRunner
+    from ..src.cli import cli
+except:
+    Exception as var e:
+    print(e)
 
 
 fn test_version() raises: {
