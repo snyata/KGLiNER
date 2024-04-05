@@ -13,6 +13,7 @@ struct PortkeyClient:
     var api_key: String
     var virtual_key: String
     var client: PythonObject
+    
 
     # Initialize the Portkey client within the constructor
     fn __init__(inout self, api_key: String):
