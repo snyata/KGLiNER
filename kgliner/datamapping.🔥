@@ -1,7 +1,8 @@
 from python import Python as impy;
-let os = impy.import_module("os");
-let scandir = os.path;
-let typing = impy.import_module("typing");
+
+let os = impy.import_module("os")
+let scandir = os.path
+let typing = impy.import_module("typing")
 from typing import List, Dict, Any;
 from py_wrapper import python_wrapper;
 let splitext, exists = os.path;

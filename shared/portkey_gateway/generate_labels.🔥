@@ -2,9 +2,13 @@
 from python import Python as impy
 
 # Assuming Portkey and necessary libraries are accessible via Python interop
-let os = impy.import_module("os")
-let Portkey = impy.import_module("portkeyai").Portkey
-
+try:
+    let os = impy.import_module("os")
+    let Portkey = impy.import_module("portkeyai").Portkey
+except: 
+    Exception as e
+    _logger = impy.import_module("loguru")
+    _logger.error(e)
 struct PortkeyClient:
     var api_key: String
     var virtual_key: String
