@@ -1,7 +1,13 @@
 from python import Python as impy;
+from py_wrapper import python_wrapper
 
 let os = impy.import_module("os");
 let typing = impy.import_module("typing");
+
+fn use_dict() raises:
+    var dictionary = impy.dict()
+    print("%s create", dictionary)
+    return print(dictionary)
 
 struct DataMapping {
     var data: Dynamic;

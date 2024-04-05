@@ -23,7 +23,8 @@ fn pk_client(let pk_api: String):
         let api_key=pk_api
         virtual_key=os.getenv("OPENAI_API_KEY"))
     except:
-        Exception as
+        Exception as var e
+        print(e)
     return print("initialized Portkey client {}", api_key)
 
 # Use Portkey Model Fallback to use various models

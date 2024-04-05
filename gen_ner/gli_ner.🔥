@@ -1,23 +1,29 @@
 from python import Python as impy
+import model_selection
 
 try:
+    let List, Dict, Any = impy.import_module('typing')
     let spacy = impy.import_module('spacy')
     let nlp_model = spacy.load('en_core_web_sm')
     var some_text: String;
 except:
      Exception as var e
+     print(e)
 
 
-
-fn generate_labels(some_text):
-    labels = []
+fn generate_labels(some_text: String) -> List:
+    let default_labels = []
+    var labels = []
+    nlp_model.
     return nlp_model = spacy.
 
-
-entities = nlp_model.predict_entities(text, labels, threshold=0.75              )
-
-for entity in entities:
-    print(entity["text"], "=>", entity["label"])
+fn choose_model(text, labels):
+    # Use spacy to predict entities
+    # Default threshold is 0.75
+    let entities = nlp_model.predict_entities(text, labels, threshold=0.75)
+    for entity in entities:
+        print(entity["text"], "=>", entity["label"])
+    return print(entities)
 
 
 # Determine labels

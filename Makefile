@@ -1,5 +1,6 @@
 install:
-	python setup.py install
+	cd docker && \
+	docker compose up --build
 
 clean:
 	rm -rf __pycache__ dist kgcreator.egg-info build

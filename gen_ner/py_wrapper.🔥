@@ -1,11 +1,8 @@
-# Py Wrapper for Mojo - It has all the things Python related.
-
-from python import Python 
+from python import Python as impy
 
 struct python_wrapper:
-
-    var py_package:PythonObject
-    var package_ready:Bool
+    var py_package: PythonObject
+    var package_ready: Bool
     var package_name: StringRef
 
     fn __init__(inout self, package_name:StringRef):
@@ -18,7 +15,7 @@ struct python_wrapper:
         except:
             self.package_ready = False
             print("Failed to import '",self.package_name, "'!!")
-    
+
     # Executes a Python function
     # @param func: The name of the function
     # @return: The result as function type
